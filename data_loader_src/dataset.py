@@ -412,7 +412,7 @@ def load_geom_gcn_dataset(name):
     fulldata = scipy.io.loadmat(f'{DATAPATH}{name}.mat')
     edge_index = fulldata['edge_index']
     node_feat = fulldata['node_feat']
-    label = np.array(fulldata['label'], dtype=np.int).flatten()
+    label = np.array(fulldata['label'], dtype=np.int64).flatten() #earlier dtype=np.int # changed to np.int64 # might use np.int32
     num_nodes = node_feat.shape[0]
 
     dataset = NCDataset(name)
